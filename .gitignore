@@ -1,6 +1,7 @@
 .ipynb_checkpoints
 *.py
 *.html
+*.csv
 
 _build/
 venv/

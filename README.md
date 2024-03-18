@@ -28,25 +28,25 @@ use [Google Colaboratory](https://colab.research.google.com/).
 To run these tutorials in [Google Colaboratory](https://colab.research.google.com/)
 you can click the button below:
 
-<a target="_blank" href="https://colab.research.google.com/github/PV-Tutorials/2024_RdTools_Webinar/blob/main/Tutorial%200%20-%20Overview.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/PV-Tutorials/2024_PVAnalytics_RdTools_Webinar/blob/main/Tutorial%200%20-%20Overview.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
 You can also select Colaboratory from the launch icon at the top of each tutorial
-in the [Jupyter book](https://pv-tutorials.github.io/2024_RdTools_Webinar/index.html).
+in the [Jupyter book](https://pv-tutorials.github.io/2024_PVAnalytics_RdTools_Webinar/index.html).
 
 #### Installing Requirements
 When using Google Colaboratory, you must uncomment the first cell that installs
 the tutorial requirements.
 
-    !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2024_RdTools_Webinar/main/requirements.txt
+    !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2024_PVAnalytics_RdTools_Webinar/main/requirements.txt
 
 ### Jupyter Books
 
 The full tutorial is hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
 This book has navigation, search, and can be used to launch each book in Colaboratory.
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_RdTools_Webinar/index.html>)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_PVAnalytics_RdTools_Webinar/index.html>)
 
 ### My Binder
 
@@ -67,7 +67,7 @@ steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/PV-Tutorials/2024_RdTools_Webinar.git
+   git clone https://github.com/PV-Tutorials/2024_PVAnalytics_RdTools_Webinar.git
    ```
 
 1. Create the environment and install the requirements. The repository includes

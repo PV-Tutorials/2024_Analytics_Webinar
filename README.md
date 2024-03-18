@@ -7,46 +7,28 @@ production of PV systems. The tutorial is divided into 5 sections and several
 appendicies.
 
 ## Tutorial Summary:
-* **Tutorial 0**: Introduction to the tutorial, the lesson plan, and resources (~30 minutes)
-* **Tutorial 1**: Access TMY weather data and visualize monthly irradiance data (~30 minutes)
-* **Tutorial 2**: Calculate solar position, plane-of-array irradiance, and
-  visualize average daily insolation (30 minutes)
-* **Tutorial 3**: Estimate module temperature from ambient (~20 minutes)
-* **Tutorial 4**: Use POA irradiance and module temperature to model output power
-  from a single module (~20 minutes)
-* **Tutorial 5**: Combine modules to form strings, calculate inverter efficiency
-  and total array output (~independent study)
-* **Tutorials Appendices**: More tutorials on a variety of fun topics (~independent study)
+* **Introduction**: Introduction to the tools being demoed
+* **Tutorial 1**: PVAnalytics demo (~15 minutes)
+* **Tutorial 2**: RDTools demo (~30 minutes)
+* **Tutorial 3**: SDT demo (~30 minutes)
 
 ## Tutorial Setup
 These tutorials are made with [Jupyter](https://jupyter.org), which is a
 browser based interactive Python notebook that allows you to run the tutorials
-in the cloud without any additional setup. On the day of the tutorial, we will
-use [Google Colaboratory](https://colab.research.google.com/).
-
-### Google Colaboratory
-To run these tutorials in [Google Colaboratory](https://colab.research.google.com/)
-you can click the button below:
-
-<a target="_blank" href="https://colab.research.google.com/github/PV-Tutorials/2024_PVAnalytics_RdTools_Webinar/blob/main/Tutorial%200%20-%20Overview.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
-
-You can also select Colaboratory from the launch icon at the top of each tutorial
-in the [Jupyter book](https://pv-tutorials.github.io/2024_PVAnalytics_RdTools_Webinar/index.html).
+in the cloud without any additional setup.
 
 #### Installing Requirements
 When using Google Colaboratory, you must uncomment the first cell that installs
 the tutorial requirements.
 
-    !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2024_PVAnalytics_RdTools_Webinar/main/requirements.txt
+    !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2024_Analytics_Webinar/requirements.txt
 
 ### Jupyter Books
 
 The full tutorial is hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
 This book has navigation, search, and can be used to launch each book in Colaboratory.
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_PVAnalytics_RdTools_Webinar/index.html>)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_Analytics_Webinar/index.html>)
 
 ### My Binder
 
@@ -67,7 +49,7 @@ steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/PV-Tutorials/2024_PVAnalytics_RdTools_Webinar.git
+   git clone https://github.com/PV-Tutorials/2024_Analytics_Webinar.git
    ```
 
 1. Create the environment and install the requirements. The repository includes
@@ -75,8 +57,8 @@ steps:
    this tutorial. To install them using conda run:
 
    ```
-   conda create -n pvsc50 jupyter -c pvlib --file requirements.txt
-   conda activate pvsc50
+   conda create -n oss_webinar jupyter -c pvlib --file requirements.txt
+   conda activate oss_webinar
    ```
 
 1. Start a Jupyter session:
@@ -85,7 +67,7 @@ steps:
    jupyter notebook
    ```
 
-1. Use the file explorer in Jupyter lab to browse to `PVSC50`
+1. Use the file explorer in Jupyter lab to browse to `2024_Analytics_Webinar`
    and start the first Tutorial.
 
 

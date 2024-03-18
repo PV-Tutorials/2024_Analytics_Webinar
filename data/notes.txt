@@ -1,1 +1,0 @@
-This folder will contain any Data Prize data as it is downloaded when the associated notebooks are run, as well as NSRDB data for site 2107.

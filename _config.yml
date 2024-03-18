@@ -1,9 +1,9 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: PVSC 50 Python Tutorial
-author: Silvana Ayala Pelaez, Mark Mikofski
-logo: images/tutorial_banner.PNG
+title: OSS Webinar 2 Python Tutorial
+author: Kevin Anderson, Kirsten Perry, Michael Deceglie
+#logo: images/tutorial_banner.PNG
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns: [_build, venv, .git, .github, "**.ipynb_checkpoints"]
 # Auto-exclude files not in the toc
@@ -25,7 +25,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/PVSC-Python-Tutorials/PVSC50
+  url: https://github.com/PV-Tutorials/2024_RdTools_Webinar
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main
 

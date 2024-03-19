@@ -1,10 +1,10 @@
-![tutorialpromo](images/tutorial_banner.PNG)
+![tutorialpromo]
 
-# PVSC50 Python Tutorial
-Welcome! The goal of this tutorial is to introduce attendees to the
-[pvlib python](https://pvlib-python.readthedocs.io/) package for modeling
-production of PV systems. The tutorial is divided into 5 sections and several
-appendicies.
+# OSS Webinar Python Tutorial
+Welcome! The goal of this tutorial is to introduce attendees to the following packages:
+* PVAnalytics[https://pvanalytics.readthedocs.io/en/stable/]
+* RdTools[https://rdtools.readthedocs.io/en/stable/]
+* Solar-Data-Tools[https://solar-data-tools.readthedocs.io/en/documentation-sphinx/]
 
 ## Tutorial Summary:
 * **Introduction**: Introduction to the tools being demoed
@@ -30,13 +30,30 @@ This book has navigation, search, and can be used to launch each book in Colabor
 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_Analytics_Webinar/index.html>)
 
-### My Binder
+### Running PVAnalytics
 
-The tutorials will remain available on GitHub, and you can run
-the tutorial anytime in [Binder](https://mybinder.org) by clicking the
-following link:
+The following file(s) relate to the PVAnalytics tutorials:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC50/main)
+- 'pvanalytics-slideshow.ipynb' : This tutorial gives an example pipeline for pre-processing an AC power data stream.
+- 'pvanalytics-irradiance-qa.ipynb' : This tutorial gives an example pipeline for pre-processing an irradiance data stream. 
+- 'pvanalytics-temperature-qa.ipynb' : This tutorial gives an example pipeline for pre-processing a temperature data stream. 
+- 'pvanalytics-wind-speed-qa.ipynb' : This tutorial gives an example pipeline for pre-processing an wind speed data stream. 
+
+Please run all tutorials to generate the associated pickle files in the /data/ folder, which contain the final processed time series.
+
+### Running RdTools
+
+The following file(s) relate to the RdTools tutorials:
+
+- 'RdTools Tutorial.ipynb' : This tutorial gives an overview of using RdTools to estimate inverter-level degradation and soiling for Solar Data Prize system 2107.
+
+In order to run the RdTools tutorial, please run the associated PVAnalytics notebooks to generate the pickle files containing the processed, filtered time series data.
+
+### Running Solar-Data-Tools
+
+The following file(s) relate to the Solar-Data-Tools tutorials:
+
+- 'solar-data-tools-demo.ipynb' : This tutorial gives an overview of using Solar-Data-Tools to preprocess solar data streams, estimate degradation, and perform loss factor analysis.
 
 ### Locally
 

@@ -1,3 +1,9 @@
-pvlib==0.9.5
-matplotlib
-solar-data-tools
+pvlib==0.10.3
+matplotlib==3.8.3
+solar-data-tools==1.1.1
+rdtools==2.1.8
+pvanalytics==0.2.0
+pandas==2.0.3
+notebook==6.4.8
+rise==5.7.1
+ruptures==1.1.9

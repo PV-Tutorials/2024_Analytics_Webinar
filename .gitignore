@@ -3,6 +3,7 @@
 *.csv
 ### Except this one
 !data/inverter01_comparison.csv
+!data/NSRDB/*.csv
 
 # Created by https://www.toptal.com/developers/gitignore/api/jupyternotebooks,macos,windows,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=jupyternotebooks,macos,windows,linux

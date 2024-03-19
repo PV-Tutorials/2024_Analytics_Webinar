@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PVAnalytics QA Process: Wind Speed &#8212; OSS Webinar 2 Python Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pvanalytics-wind-speed-qa-analysis';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OSS Webinar 2 Python Tutorial</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    OSS Webinar Python Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pvanalytics-slideshow.html">Python PVAnalytics QA Demo for AC Power Data</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="RdTools%20tutorial.html">RdTools tutorial</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="rdtools-availability.html">SETO Webinar 2: RdTools availability analysis</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="solar-data-tools-demo.html">Solar Data Tools Webinar</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PV-Tutorials/2024_RdTools_Webinar/blob/main/pvanalytics-wind-speed-qa-analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2024_RdTools_Webinar" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2024_RdTools_Webinar/issues/new?title=Issue%20on%20page%20%2Fpvanalytics-wind-speed-qa-analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pvanalytics-wind-speed-qa-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PVAnalytics QA Process: Wind Speed</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PVAnalytics QA Process: Wind Speed</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-basic-data-checks">Run Basic Data Checks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-completeness-check">Daily Completeness Check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-capacity-shifts">Data/Capacity Shifts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-filtered-wind-speed-series">Final Filtered Wind Speed Series</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pvanalytics-qa-process-wind-speed">
+<h1>PVAnalytics QA Process: Wind Speed<a class="headerlink" href="#pvanalytics-qa-process-wind-speed" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pvanalytics</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rdtools</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mode</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="c1"># pvanalytics.__version__</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features.clearsky</span> <span class="kn">import</span> <span class="n">reno</span>       <span class="c1">#update to just do a pvanalytics import?</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality</span> <span class="kn">import</span> <span class="n">data_shifts</span> <span class="k">as</span> <span class="n">ds</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality</span> <span class="kn">import</span> <span class="n">gaps</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality.outliers</span> <span class="kn">import</span> <span class="n">zscore</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features.daytime</span> <span class="kn">import</span> <span class="n">power_or_irradiance</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality.time</span> <span class="kn">import</span> <span class="n">shifts_ruptures</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features</span> <span class="kn">import</span> <span class="n">daytime</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.system</span> <span class="kn">import</span> <span class="p">(</span><span class="n">is_tracking_envelope</span><span class="p">,</span>
+                                <span class="n">infer_orientation_fit_pvwatts</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features.clipping</span> <span class="kn">import</span> <span class="n">geometric</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features.clearsky</span> <span class="kn">import</span> <span class="n">reno</span>
+<span class="kn">import</span> <span class="nn">ruptures</span> <span class="k">as</span> <span class="nn">rpt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                           <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                           <span class="s1">&#39;lines.markeredgewidth&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                           <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">2</span>
+                           <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the following example, a process for assessing the data quality of a wind speed data stream is shown, using PVAnalytics functions. These example pipelines illustrates how several PVAnalytics functions can be used in sequence to assess the quality of a wind speed data stream.</p>
+<p>First, we download and import the wind speed data stream from a PV installation under the <a class="reference external" href="https://data.openei.org/s3_viewer?bucket=oedi-data-lake&amp;amp;limit=100&amp;amp;prefix=pvdaq%2F2023-solar-data-prize%2F">2023 solar data prize data set</a>. This data set is publicly available via the PVDAQ database in the DOE Open Energy Data Initiative (OEDI) (<a class="reference external" href="https://data.openei.org/submissions/4568">https://data.openei.org/submissions/4568</a>), under system ID 2107. This data is timezone-localized.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./data/2107_system_metadata.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+<span class="n">tz</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;System&#39;</span><span class="p">][</span><span class="s1">&#39;timezone_code&#39;</span><span class="p">]</span>
+ 
+<span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">file_path</span><span class="p">,</span>
+        <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df_env</span> <span class="o">=</span> <span class="n">load_csv</span><span class="p">(</span><span class="s2">&quot;./data/2107_environment_data.csv&quot;</span><span class="p">)</span>
+
+<span class="n">df_env</span> <span class="o">=</span> <span class="n">df_env</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="n">tz</span><span class="p">,</span> <span class="n">ambiguous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;Site&#39;</span><span class="p">][</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;Site&#39;</span><span class="p">][</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get wind speed column and turn it into a series</span>
+<span class="n">wind_time_series</span> <span class="o">=</span> <span class="n">df_env</span><span class="p">[</span><span class="s1">&#39;wind_speed_o_149576&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original Time Series&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wind speed (m/s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b83c1e3506fb23bd790b7aa52306f27aab449748d0a39a1b5156427be7d81d1d.png" src="_images/b83c1e3506fb23bd790b7aa52306f27aab449748d0a39a1b5156427be7d81d1d.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-basic-data-checks">
+<h1>Run Basic Data Checks<a class="headerlink" href="#run-basic-data-checks" title="Link to this heading">#</a></h1>
+<p>Now, let’s run basic data checks to identify stale and abnormal/outlier data in the time series. Basic data checks include the following steps:</p>
+<ol class="arabic simple">
+<li><p>Flatlined/stale data periods <a class="reference external" href="https://pvanalytics--202.org.readthedocs.build/en/202/generated/pvanalytics.quality.gaps.stale_values_round.html#pvanalytics.quality.gaps.stale_values_round">(pvanalytics.quality.gaps.stale_values_round()).</a></p></li>
+<li><p>Outliers, which are defined as more than one 5 standard deviations away from the mean <a class="reference external" href="https://pvanalytics--202.org.readthedocs.build/en/202/generated/pvanalytics.quality.outliers.zscore.html#pvanalytics.quality.outliers.zscore">(pvanalytics.quality.outliers.zscore()).</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># REMOVE STALE DATA</span>
+<span class="n">stale_data_mask</span> <span class="o">=</span> <span class="n">gaps</span><span class="o">.</span><span class="n">stale_values_round</span><span class="p">(</span><span class="n">wind_time_series</span><span class="p">,</span>
+                                          <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                                          <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mark</span> <span class="o">=</span> <span class="s2">&quot;tail&quot;</span><span class="p">)</span>
+
+<span class="c1"># FIND OUTLIERS (Z-SCORE FILTER)</span>
+<span class="n">zscore_outlier_mask</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">wind_time_series</span><span class="p">,</span>
+                             <span class="n">zmax</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                             <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span>
+
+<span class="c1"># Get the percentage of data flagged for each issue, so it can later be logged</span>
+<span class="n">pct_stale</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">wind_time_series</span><span class="p">[</span>
+    <span class="n">stale_data_mask</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pct_outlier</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">wind_time_series</span><span class="p">[</span>
+    <span class="n">zscore_outlier_mask</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Visualize all of the time series issues (stale, abnormal, outlier)</span>
+<span class="n">wind_time_series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">stale_data_mask</span><span class="p">):</span>
+    <span class="n">wind_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stale_data_mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                                          <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Stale&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">zscore_outlier_mask</span><span class="p">):</span>
+    <span class="n">wind_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">zscore_outlier_mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                                              <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                                              <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Outlier&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time Series Labeled for Basic Issues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wind Speed (m/s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a18a029f194d33bee79bb54ea6678e59c313bb9400391aabc49054d08f53f681.png" src="_images/a18a029f194d33bee79bb54ea6678e59c313bb9400391aabc49054d08f53f681.png" />
+</div>
+</div>
+<p>Now, let’s filter out any of the flagged data from the basic temperature checks (stale or abnormal data).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter the time series, taking out all of the issues</span>
+<span class="n">issue_mask</span> <span class="o">=</span> <span class="p">((</span><span class="o">~</span><span class="n">stale_data_mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">zscore_outlier_mask</span><span class="p">))</span>
+
+<span class="n">wind_time_series</span> <span class="o">=</span> <span class="n">wind_time_series</span><span class="p">[</span><span class="n">issue_mask</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="daily-completeness-check">
+<h1>Daily Completeness Check<a class="headerlink" href="#daily-completeness-check" title="Link to this heading">#</a></h1>
+<p>We filter the time series based on its daily completeness score. This filtering scheme requires at least 25% of data to be present for each day to be included.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the time frequency of the time series</span>
+<span class="n">freq_minutes</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">data_freq</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">freq_minutes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;min&quot;</span>
+
+<span class="n">wind_time_series</span> <span class="o">=</span> <span class="n">wind_time_series</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="n">data_freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize daily data completeness</span>
+<span class="c1"># Data frequency chaged to 60T due to duplicated data for every hr</span>
+<span class="c1"># data_completeness_score = gaps.completeness_score(wind_time_series.asfreq(&quot;60T&quot;))</span>
+<span class="n">data_completeness_score</span> <span class="o">=</span> <span class="n">gaps</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">wind_time_series</span><span class="p">)</span>
+
+<span class="c1"># Visualize data completeness score as a time series.</span>
+<span class="n">data_completeness_score</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Daily Completeness Score (Fractional)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily Completeness Cutoff&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Trim the series based on daily completeness score</span>
+<span class="n">trim_series_mask</span> <span class="o">=</span> <span class="n">pvanalytics</span><span class="o">.</span><span class="n">quality</span><span class="o">.</span><span class="n">gaps</span><span class="o">.</span><span class="n">trim_incomplete</span><span class="p">(</span>
+    <span class="n">wind_time_series</span><span class="p">,</span>
+    <span class="n">minimum_completeness</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="n">data_freq</span><span class="p">)</span>
+
+<span class="n">wind_time_series</span> <span class="o">=</span> <span class="n">wind_time_series</span><span class="p">[</span><span class="n">trim_series_mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7080278035bcf71e303f7f2d31679d445e3a7483739387f0a284fc3b669ffd6b.png" src="_images/7080278035bcf71e303f7f2d31679d445e3a7483739387f0a284fc3b669ffd6b.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-capacity-shifts">
+<h1>Data/Capacity Shifts<a class="headerlink" href="#data-capacity-shifts" title="Link to this heading">#</a></h1>
+<p>Next, we check the time series for any abrupt data shifts. We take the longest continuous part of the time series that is free of data shifts. We use <a class="reference external" href="https://pvanalytics--202.org.readthedocs.build/en/202/generated/pvanalytics.quality.data_shifts.detect_data_shifts.html#pvanalytics.quality.data_shifts.detect_data_shifts">pvanalytics.quality.data_shifts.detect_data_shifts()</a> to detect data shifts in the time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resample the time series to daily mean</span>
+<span class="n">wind_time_series_daily</span> <span class="o">=</span> <span class="n">wind_time_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">data_shift_start_date</span><span class="p">,</span> <span class="n">data_shift_end_date</span> <span class="o">=</span> \
+    <span class="n">ds</span><span class="o">.</span><span class="n">get_longest_shift_segment_dates</span><span class="p">(</span><span class="n">wind_time_series_daily</span><span class="p">)</span>
+<span class="n">data_shift_period_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_shift_end_date</span> <span class="o">-</span>
+                            <span class="n">data_shift_start_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+
+<span class="c1"># Get the number of shift dates</span>
+<span class="n">data_shift_mask</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">detect_data_shifts</span><span class="p">(</span><span class="n">wind_time_series_daily</span><span class="p">)</span>
+<span class="c1"># Get the shift dates</span>
+<span class="n">shift_dates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">wind_time_series_daily</span><span class="p">[</span><span class="n">data_shift_mask</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shift_dates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">shift_found</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">shift_found</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Visualize the time shifts for the daily time series</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shift Found: &quot;</span><span class="p">,</span> <span class="n">shift_found</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">([</span><span class="n">wind_time_series_daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">shift_dates</span> <span class="o">+</span>
+         <span class="p">[</span><span class="n">wind_time_series_daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="n">ed</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wind_time_series_daily</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">st</span><span class="p">:</span><span class="n">ed</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Daily Time Series Labeled for Data Shifts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wind Speed (m/s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift Found:  False
+</pre></div>
+</div>
+<img alt="_images/451252f891cadbbe77631f5ea13b33c4578eae7f4fe10a64f464fc0397f9d00f.png" src="_images/451252f891cadbbe77631f5ea13b33c4578eae7f4fe10a64f464fc0397f9d00f.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="final-filtered-wind-speed-series">
+<h1>Final Filtered Wind Speed Series<a class="headerlink" href="#final-filtered-wind-speed-series" title="Link to this heading">#</a></h1>
+<p>Finally, we filter the time series to only include the longest shift-free period. We then visualize the
+final time series post-QA filtering.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_time_series</span> <span class="o">=</span> <span class="n">wind_time_series</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span>
+     <span class="n">data_shift_start_date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz</span><span class="p">))</span> <span class="o">&amp;</span>
+    <span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;=</span>
+     <span class="n">data_shift_end_date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">wind_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz</span><span class="p">))]</span>
+
+<span class="c1"># Plot the final filtered time series.</span>
+<span class="n">wind_time_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Final Filtered Time Series&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wind Speed (m/s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">wind_time_series</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;./data/wind_speed_o_149576.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3386f0af7489ebdf2bd12a5ce08eafe229e99aaf3b4a6310cbc661fa56aefe44.png" src="_images/3386f0af7489ebdf2bd12a5ce08eafe229e99aaf3b4a6310cbc661fa56aefe44.png" />
+</div>
+</div>
+<p>Generate a dictionary output for the QA assessment of this data stream, including the percent stale and erroneous data detected, and any shift dates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qa_check_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pct_stale&quot;</span><span class="p">:</span> <span class="n">pct_stale</span><span class="p">,</span>
+                 <span class="s2">&quot;pct_outlier&quot;</span><span class="p">:</span> <span class="n">pct_outlier</span><span class="p">,</span>
+                 <span class="s2">&quot;data_shifts&quot;</span><span class="p">:</span> <span class="n">shift_found</span><span class="p">,</span>
+                 <span class="s2">&quot;shift_dates&quot;</span><span class="p">:</span> <span class="n">shift_dates</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;QA Results:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qa_check_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QA Results:
+{&#39;pct_stale&#39;: 76.1, &#39;pct_outlier&#39;: 0.1, &#39;data_shifts&#39;: False, &#39;shift_dates&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PV-Tutorials/2024_RdTools_Webinar",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PVAnalytics QA Process: Wind Speed</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-basic-data-checks">Run Basic Data Checks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-completeness-check">Daily Completeness Check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-capacity-shifts">Data/Capacity Shifts</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-filtered-wind-speed-series">Final Filtered Wind Speed Series</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kevin Anderson, Kirsten Perry, Michael Deceglie
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

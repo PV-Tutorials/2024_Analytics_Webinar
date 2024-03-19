@@ -1,0 +1,1246 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python PVAnalytics QA Demo for AC Power Data &#8212; OSS Webinar 2 Python Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pvanalytics-slideshow';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RdTools tutorial" href="RdTools%20tutorial.html" />
+    <link rel="prev" title="OSS Webinar Python Tutorial" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OSS Webinar 2 Python Tutorial</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    OSS Webinar Python Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python PVAnalytics QA Demo for AC Power Data</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="RdTools%20tutorial.html">RdTools tutorial</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="rdtools-availability.html">SETO Webinar 2: RdTools availability analysis</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="solar-data-tools-demo.html">Solar Data Tools Webinar</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PV-Tutorials/2024_RdTools_Webinar/blob/main/pvanalytics-slideshow.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2024_RdTools_Webinar" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2024_RdTools_Webinar/issues/new?title=Issue%20on%20page%20%2Fpvanalytics-slideshow.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pvanalytics-slideshow.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python PVAnalytics QA Demo for AC Power Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Python PVAnalytics QA Demo for AC Power Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirsten-perry-march-19th-2024">Kirsten Perry, March 19th 2024</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-data-checks-stale-data-outliers-abnormal-periods">Basic Data Checks: Stale Data, Outliers, Abnormal Periods</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-completeness-score">Daily Completeness Score</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-shift-check">Time Shift Check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-capacity-shift-check">Data/Capacity Shift Check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-mounting-configuration">Assessing Mounting Configuration</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-azimuth-and-tilt">Assessing Azimuth and Tilt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thank-you-for-additional-examples-check-out-pvanalytics-documentation-https-pvanalytics-readthedocs-io-en-stable">Thank you! For additional examples, check out PVAnalytics documentation: https://pvanalytics.readthedocs.io/en/stable/</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the associated packages</span>
+<span class="kn">import</span> <span class="nn">pvanalytics</span>
+<span class="kn">import</span> <span class="nn">rdtools</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality</span> <span class="kn">import</span> <span class="n">data_shifts</span> <span class="k">as</span> <span class="n">ds</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality</span> <span class="kn">import</span> <span class="n">gaps</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality.outliers</span> <span class="kn">import</span> <span class="n">zscore</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features.daytime</span> <span class="kn">import</span> <span class="n">power_or_irradiance</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.quality.time</span> <span class="kn">import</span> <span class="n">shifts_ruptures</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features</span> <span class="kn">import</span> <span class="n">daytime</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.system</span> <span class="kn">import</span> <span class="p">(</span><span class="n">is_tracking_envelope</span><span class="p">,</span>
+                                <span class="n">infer_orientation_fit_pvwatts</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pvanalytics.features.clearsky</span> <span class="kn">import</span> <span class="n">reno</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mode</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">ruptures</span> <span class="k">as</span> <span class="nn">rpt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="python-pvanalytics-qa-demo-for-ac-power-data">
+<h1>Python PVAnalytics QA Demo for AC Power Data<a class="headerlink" href="#python-pvanalytics-qa-demo-for-ac-power-data" title="Link to this heading">#</a></h1>
+<section id="kirsten-perry-march-19th-2024">
+<h2>Kirsten Perry, March 19th 2024<a class="headerlink" href="#kirsten-perry-march-19th-2024" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Functions from the PVAnalytics package can be used to assess the quality of systems’ PV data.</p></li>
+<li><p>Data quality routine for an AC power data stream is illustrated using PVAnalytics v0.2.0 (available on PyPi).</p></li>
+<li><p>Please refer to associated Jupyter notebooks in following repo for routines for temperature, irradiance, and wind speed: <a class="github reference external" href="https://github.com/PV-Tutorials/2024_Analytics_Webinar">PV-Tutorials/2024_Analytics_Webinar</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>First, import the power data stream from a PV installation under the <a class="reference external" href="https://data.openei.org/s3_viewer?bucket=oedi-data-lake&amp;amp;limit=100&amp;amp;prefix=pvdaq%2F2023-solar-data-prize%2F">2023 solar data prize data set</a>.</p></li>
+<li><p>Data set is publicly available via the DOE Open Energy Data Initiative (OEDI) (<a class="reference external" href="https://data.openei.org/submissions/4568">https://data.openei.org/submissions/4568</a>), under system ID 2107. Data is timezone-localized.</p></li>
+</ul>
+<p>Satellite image of the site:</p>
+<p><img alt="alt text" src="images/2107_satellite_image.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./data/2107_system_metadata.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">tz</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;System&#39;</span><span class="p">][</span><span class="s1">&#39;timezone_code&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">parse_prize_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">tz</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;measured_on&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="n">tz</span><span class="p">,</span> <span class="n">ambiguous</span><span class="o">=</span><span class="s1">&#39;NaT&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dropna</span><span class="p">()]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df_elect</span> <span class="o">=</span> <span class="n">parse_prize_csv</span><span class="p">(</span><span class="s1">&#39;./data/2107_electrical_data.csv&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+
+<span class="n">power_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_elect</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;power&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;Site&#39;</span><span class="p">][</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;Site&#39;</span><span class="p">][</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./data/2107_electrical_data.csv 2017-11-01 00:00:00-07:00:2023-11-07 23:55:00-08:00
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we select an AC power stream to analyze, and visualize it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get power column and turn it into a series</span>
+<span class="n">col</span> <span class="o">=</span> <span class="s1">&#39;inv_01_ac_power_inv_149583&#39;</span>
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">df_elect</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Get the time frequency of the time series</span>
+<span class="n">freq_minutes</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">data_freq</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">freq_minutes</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;min&quot;</span>
+
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="n">data_freq</span><span class="p">)</span>
+
+<span class="c1"># Show the original time series</span>
+<span class="n">power_time_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original Time Series&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;AC Power (kW)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e0a67786a2d881ea3ac3ca4979ae62f1356bc98101ae3c67db64290952e62882.png" src="_images/e0a67786a2d881ea3ac3ca4979ae62f1356bc98101ae3c67db64290952e62882.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="basic-data-checks-stale-data-outliers-abnormal-periods">
+<h1>Basic Data Checks: Stale Data, Outliers, Abnormal Periods<a class="headerlink" href="#basic-data-checks-stale-data-outliers-abnormal-periods" title="Link to this heading">#</a></h1>
+<p>Now, let’s run basic data checks to identify stale and abnormal/outlier data in the time series. Basic data checks include the following:</p>
+<ul class="simple">
+<li><p>Flatlined/stale data periods (which are not clipped or nighttime)</p></li>
+<li><p>Negative data</p></li>
+<li><p>“Abnormal” data days, which are days where the daily minimum is greater than 10% of the daily time series mean</p></li>
+<li><p>Outliers, which we set as 4 standard deviations away from the mean</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># REMOVE STALE DATA (that isn&#39;t during nighttime periods or clipped)</span>
+<span class="c1"># Day/night mask</span>
+<span class="n">daytime_mask</span> <span class="o">=</span> <span class="n">power_or_irradiance</span><span class="p">(</span><span class="n">power_time_series</span><span class="p">)</span>
+<span class="c1"># Clipped data (uses rdtools filters)</span>
+<span class="n">clipping_mask</span> <span class="o">=</span> <span class="n">rdtools</span><span class="o">.</span><span class="n">filtering</span><span class="o">.</span><span class="n">xgboost_clip_filter</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="p">)</span>
+<span class="n">stale_data_mask</span> <span class="o">=</span> <span class="n">gaps</span><span class="o">.</span><span class="n">stale_values_round</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="p">,</span>
+    <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">stale_data_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">stale_data_mask</span> <span class="o">&amp;</span> <span class="n">daytime_mask</span>
+                   <span class="o">&amp;</span> <span class="n">clipping_mask</span><span class="p">)</span>
+<span class="c1"># REMOVE NEGATIVE DATA</span>
+<span class="n">negative_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">power_time_series</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># FIND ABNORMAL PERIODS</span>
+<span class="n">daily_min</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>   
+<span class="n">series_min</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">erroneous_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">daily_min</span> <span class="o">&gt;=</span> <span class="n">series_min</span><span class="p">)</span>
+<span class="n">erroneous_mask</span> <span class="o">=</span> <span class="n">erroneous_mask</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">,</span>
+    <span class="n">fill_value</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># FIND OUTLIERS (Z-SCORE FILTER)</span>
+<span class="n">zscore_outlier_mask</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">power_time_series</span><span class="p">,</span>
+                             <span class="n">zmax</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                             <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s visualize all of the basic quality issues found during the previous data check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize all of the time series issues (stale,</span>
+<span class="c1"># abnormal, outlier, etc)</span>
+<span class="n">power_time_series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AC Power&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">stale_data_mask</span><span class="p">):</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stale_data_mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Stale&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">negative_mask</span><span class="p">):</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">negative_mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Negative&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">erroneous_mask</span><span class="p">):</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">erroneous_mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Abnormal&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">zscore_outlier_mask</span><span class="p">):</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">zscore_outlier_mask</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Outlier&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time Series Labeled for Basic Issues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;AC Power (kW)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Filter the time series, taking out all of the issues</span>
+<span class="n">issue_mask</span> <span class="o">=</span> <span class="p">((</span><span class="o">~</span><span class="n">stale_data_mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">negative_mask</span><span class="p">)</span> <span class="o">&amp;</span>
+          <span class="p">(</span><span class="o">~</span><span class="n">erroneous_mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">zscore_outlier_mask</span><span class="p">))</span>
+
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="p">[</span><span class="n">issue_mask</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="n">data_freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7a477bd81acab276c91d1b2edfadec6e5f45b1e5e216f2079cc97d59300b92d7.png" src="_images/7a477bd81acab276c91d1b2edfadec6e5f45b1e5e216f2079cc97d59300b92d7.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="daily-completeness-score">
+<h1>Daily Completeness Score<a class="headerlink" href="#daily-completeness-score" title="Link to this heading">#</a></h1>
+<p>Next, we filter the time series based on its daily completeness score. This filtering scheme requires at least 25% of data to be present for each day to be included.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize daily data completeness</span>
+<span class="n">power_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">daytime_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">data_completeness_score</span> <span class="o">=</span> <span class="n">gaps</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="p">)</span>
+
+<span class="c1"># Visualize data completeness score as a time series.</span>
+<span class="n">data_completeness_score</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Daily Completeness Score (Fractional)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily Completeness Cutoff&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Trim the series based on daily completeness score</span>
+<span class="n">trim_series_mask</span> <span class="o">=</span> \
+<span class="n">pvanalytics</span><span class="o">.</span><span class="n">quality</span><span class="o">.</span><span class="n">gaps</span><span class="o">.</span><span class="n">trim_incomplete</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="p">,</span>
+    <span class="n">minimum_completeness</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span>
+    <span class="n">freq</span><span class="o">=</span><span class="n">data_freq</span><span class="p">)</span>
+
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="p">[</span><span class="n">trim_series_mask</span><span class="p">]</span>
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8a0bfca14a639aaa71a86f3457c1ea7576792ee1a36848478eec09fed5d6ab23.png" src="_images/8a0bfca14a639aaa71a86f3457c1ea7576792ee1a36848478eec09fed5d6ab23.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="time-shift-check">
+<h1>Time Shift Check<a class="headerlink" href="#time-shift-check" title="Link to this heading">#</a></h1>
+<p>Next, we check the time series for any time shifts, which may be caused by time drift or by incorrect time zone assignment. To do this, we compare the modelled midday time for the particular system location to its measured midday time, using PVAnalytics functionality. There should be DST present in this series, as the given timezone is US/Los Angeles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the heatmap of the AC power time series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="c1"># Get time of day from the associated datetime column</span>
+<span class="n">time_of_day</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span>
+    <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># Pivot the dataframe</span>
+<span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">power_time_series</span><span class="p">,</span>
+                                    <span class="n">time_of_day</span><span class="p">],</span>
+                                   <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">,</span> <span class="s1">&#39;time_of_day&#39;</span><span class="p">]</span>
+<span class="n">dataframe</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">dataframe_pivoted</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;time_of_day&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">dataframe</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+    <span class="n">values</span><span class="o">=</span><span class="s2">&quot;values&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">dataframe_pivoted</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+               <span class="n">dataframe_pivoted</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+               <span class="n">dataframe_pivoted</span><span class="p">,</span>
+               <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Time of day [0-24]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AC Power Heatmap, Time of Day&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c30f434386324dd04b4662861d1064048016c0280d706b499f07e2672d61ac56.png" src="_images/c30f434386324dd04b4662861d1064048016c0280d706b499f07e2672d61ac56.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the modeled sunrise and sunset time series based</span>
+<span class="c1"># on the system&#39;s latitude-longitude coordinates</span>
+<span class="n">modeled_sunrise_sunset_df</span> <span class="o">=</span> \
+<span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">sun_rise_set_transit_spa</span><span class="p">(</span>
+     <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+
+<span class="c1"># Calculate the midday point between sunrise and sunset</span>
+<span class="c1"># for each day in the modeled power series</span>
+<span class="n">modeled_midday_series</span> <span class="o">=</span> \
+<span class="n">modeled_sunrise_sunset_df</span><span class="p">[</span><span class="s1">&#39;sunrise&#39;</span><span class="p">]</span> <span class="o">+</span> \
+    <span class="p">(</span><span class="n">modeled_sunrise_sunset_df</span><span class="p">[</span><span class="s1">&#39;sunset&#39;</span><span class="p">]</span> <span class="o">-</span>
+     <span class="n">modeled_sunrise_sunset_df</span><span class="p">[</span><span class="s1">&#39;sunrise&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Run day-night mask on the power time series</span>
+<span class="n">daytime_mask</span> <span class="o">=</span> <span class="n">power_or_irradiance</span><span class="p">(</span>
+    <span class="n">power_time_series</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">data_freq</span><span class="p">,</span>
+    <span class="n">low_value_threshold</span><span class="o">=</span><span class="mf">.005</span><span class="p">)</span>
+
+<span class="c1"># Generate the sunrise, sunset, and halfway points</span>
+<span class="c1"># for the data stream</span>
+<span class="n">sunrise_series</span> <span class="o">=</span> <span class="n">daytime</span><span class="o">.</span><span class="n">get_sunrise</span><span class="p">(</span><span class="n">daytime_mask</span><span class="p">)</span>
+<span class="n">sunset_series</span> <span class="o">=</span> <span class="n">daytime</span><span class="o">.</span><span class="n">get_sunset</span><span class="p">(</span><span class="n">daytime_mask</span><span class="p">)</span>
+<span class="n">midday_series</span> <span class="o">=</span> <span class="n">sunrise_series</span> <span class="o">+</span> <span class="p">((</span><span class="n">sunset_series</span> <span class="o">-</span>
+                                   <span class="n">sunrise_series</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Convert the midday and modeled midday series to daily</span>
+<span class="c1"># values</span>
+<span class="n">midday_series_daily</span><span class="p">,</span> <span class="n">modeled_midday_series_daily</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">midday_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">modeled_midday_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># Set midday value series as minutes since midnight,</span>
+<span class="c1"># from midday datetime values</span>
+<span class="n">midday_series_daily</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">midday_series_daily</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span>
+    <span class="n">midday_series_daily</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">minute</span> <span class="o">+</span>
+    <span class="n">midday_series_daily</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">second</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">modeled_midday_series_daily</span> <span class="o">=</span> \
+    <span class="p">(</span><span class="n">modeled_midday_series_daily</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span>
+     <span class="n">modeled_midday_series_daily</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">minute</span> <span class="o">+</span>
+     <span class="n">modeled_midday_series_daily</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">second</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># Estimate the time shifts by comparing the modelled</span>
+<span class="c1"># midday point to the measured midday point.</span>
+<span class="n">is_shifted</span><span class="p">,</span> <span class="n">time_shift_series</span> <span class="o">=</span> <span class="n">shifts_ruptures</span><span class="p">(</span>
+    <span class="n">midday_series_daily</span><span class="p">,</span> <span class="n">modeled_midday_series_daily</span><span class="p">,</span>
+    <span class="n">period_min</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">shift_min</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">zscore_cutoff</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a midday difference series between modeled and</span>
+<span class="c1"># measured midday, to visualize time shifts. First,</span>
+<span class="c1"># resample each time series to daily frequency, and</span>
+<span class="c1"># compare the data stream&#39;s daily halfway point to</span>
+<span class="c1"># the modeled halfway point</span>
+<span class="n">midday_diff_series</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">midday_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span>
+    <span class="n">modeled_midday_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+                      <span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mi">60</span>
+
+<span class="c1"># Generate boolean for detected time shifts</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">time_shift_series</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">time_shifts_detected</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">time_shifts_detected</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Plot the difference between measured and modeled</span>
+<span class="c1"># midday, as well as the CPD-estimated time shift series.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">midday_diff_series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span> 
+<span class="n">time_shift_series</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Midday Difference Time Shift Series&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Measured-modeled midday, minutes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/acc7a38a6b88276253e4d001b2f884dd216aa80cb82ae90d4f0dbf12d383016c.png" src="_images/acc7a38a6b88276253e4d001b2f884dd216aa80cb82ae90d4f0dbf12d383016c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate boolean for detected time shifts</span>
+<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">time_shift_series</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">time_shifts_detected</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">time_shifts_detected</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Build a list of time shifts for re-indexing. We choose to use dicts.</span>
+<span class="n">time_shift_series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+    <span class="n">time_shift_series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">changepoints</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_shift_series</span> <span class="o">!=</span> <span class="n">time_shift_series</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">changepoints</span> <span class="o">=</span> <span class="n">changepoints</span><span class="p">[</span><span class="n">changepoints</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">changepoint_amts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">time_shift_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">changepoints</span><span class="p">])</span>
+<span class="n">time_shift_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">changepoint_amts</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">changepoint_amts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">change_amt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">change_amt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">changepoint_amts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">changepoint_amts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">time_shift_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;datetime_start&quot;</span><span class="p">:</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="n">changepoint_amts</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span>
+                                <span class="s2">&quot;datetime_end&quot;</span><span class="p">:</span>
+                                    <span class="nb">str</span><span class="p">(</span><span class="n">changepoint_amts</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]),</span>
+                                <span class="s2">&quot;time_shift&quot;</span><span class="p">:</span> <span class="n">change_amt</span><span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">time_shift_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;datetime_start&quot;</span><span class="p">:</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="n">changepoint_amts</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span>
+                                <span class="s2">&quot;datetime_end&quot;</span><span class="p">:</span>
+                                    <span class="nb">str</span><span class="p">(</span><span class="n">time_shift_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+                                <span class="s2">&quot;time_shift&quot;</span><span class="p">:</span> <span class="n">change_amt</span><span class="p">})</span>
+
+<span class="c1"># Correct any time shifts in the time series</span>
+<span class="n">new_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">time_shift_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;time_shift&#39;</span><span class="p">]):</span>
+        <span class="n">new_index</span><span class="p">[(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;datetime_start&#39;</span><span class="p">]))</span> <span class="o">&amp;</span>
+              <span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;datetime_end&#39;</span><span class="p">]))]</span> <span class="o">=</span> \
+        <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;time_shift&#39;</span><span class="p">])</span>
+<span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">new_index</span>
+
+<span class="c1"># Remove duplicated indices and sort the time series (just in case)</span>
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="p">[</span><span class="o">~</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span>
+    <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-capacity-shift-check">
+<h1>Data/Capacity Shift Check<a class="headerlink" href="#data-capacity-shift-check" title="Link to this heading">#</a></h1>
+<p>Next, we check the time series for any abrupt data shifts. We take the longest continuous part of the time series that is free of data shifts. We use <a class="reference external" href="https://pvanalytics--202.org.readthedocs.build/en/202/generated/pvanalytics.quality.data_shifts.detect_data_shifts.html#pvanalytics.quality.data_shifts.detect_data_shifts">pvanalytics.quality.data_shifts.detect_data_shifts()</a> to detect data shifts in the time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set all values in the nighttime mask to 0</span>
+<span class="n">power_time_series</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">daytime_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># Resample the time series to daily mean</span>
+<span class="n">power_time_series_daily</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">data_shift_start_date</span><span class="p">,</span> <span class="n">data_shift_end_date</span> <span class="o">=</span> \
+<span class="n">ds</span><span class="o">.</span><span class="n">get_longest_shift_segment_dates</span><span class="p">(</span>
+    <span class="n">power_time_series_daily</span><span class="p">,</span>
+    <span class="n">use_default_models</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="n">rpt</span><span class="o">.</span><span class="n">Binseg</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span>
+    <span class="n">penalty</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">data_shift_period_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_shift_end_date</span> <span class="o">-</span>
+                            <span class="n">data_shift_start_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+
+<span class="c1"># Get the number of shift dates</span>
+<span class="n">data_shift_mask</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">detect_data_shifts</span><span class="p">(</span>
+    <span class="n">power_time_series_daily</span><span class="p">,</span> <span class="n">use_default_models</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="n">rpt</span><span class="o">.</span><span class="n">Binseg</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the shift dates</span>
+<span class="n">shift_dates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">power_time_series_daily</span><span class="p">[</span>
+    <span class="n">data_shift_mask</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shift_dates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">shift_found</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">shift_found</span> <span class="o">=</span> <span class="kc">False</span>
+    
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span>
+         <span class="n">data_shift_start_date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span>
+             <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz</span><span class="p">))</span> <span class="o">&amp;</span>
+        <span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;=</span>
+         <span class="n">data_shift_end_date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span>
+             <span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz</span><span class="p">))]</span>
+
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="n">data_freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the time shifts for the daily time series</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shift Found: &quot;</span><span class="p">,</span> <span class="n">shift_found</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">([</span><span class="n">power_time_series_daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">shift_dates</span> <span class="o">+</span>
+         <span class="p">[</span><span class="n">power_time_series_daily</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">st</span><span class="p">,</span> <span class="n">ed</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">power_time_series_daily</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">st</span><span class="p">:</span><span class="n">ed</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Daily Time Series Labeled for Data Shifts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;AC Power (kW)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shift Found:  True
+</pre></div>
+</div>
+<img alt="_images/263918ad2edf87836ee99687dbf0e21f79818c19498fa3ae24486446bfa51658.png" src="_images/263918ad2edf87836ee99687dbf0e21f79818c19498fa3ae24486446bfa51658.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the filtered data to a pickle</span>
+
+<span class="n">power_time_series</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;./data&quot;</span><span class="p">,</span> <span class="n">col</span> <span class="o">+</span> <span class="s2">&quot;.pkl&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assessing-mounting-configuration">
+<h1>Assessing Mounting Configuration<a class="headerlink" href="#assessing-mounting-configuration" title="Link to this heading">#</a></h1>
+<p>In addition to data filtering, PVAnalytics contains several functions for analyzing the system configurtion. Here, we verify that the mounting configuration is fixed-tilt based on the time series daily production profiles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CHECK MOUNTING CONFIGURATION</span>
+<span class="n">daytime_mask</span> <span class="o">=</span> <span class="n">power_or_irradiance</span><span class="p">(</span><span class="n">power_time_series</span><span class="p">)</span>
+<span class="n">clipping_mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">rdtools</span><span class="o">.</span><span class="n">filtering</span><span class="o">.</span><span class="n">xgboost_clip_filter</span><span class="p">(</span><span class="n">power_time_series</span><span class="p">)</span>
+<span class="n">predicted_mounting_config</span> <span class="o">=</span> <span class="n">is_tracking_envelope</span><span class="p">(</span><span class="n">power_time_series</span><span class="p">,</span>
+                                                 <span class="n">daytime_mask</span><span class="p">,</span>
+                                                 <span class="n">clipping_mask</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Mounting configuration:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predicted_mounting_config</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted Mounting configuration:
+FIXED
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assessing-azimuth-and-tilt">
+<h1>Assessing Azimuth and Tilt<a class="headerlink" href="#assessing-azimuth-and-tilt" title="Link to this heading">#</a></h1>
+<p>In addition to verifying mounting configuration, we estimate the azimuth and tilt of the system. Ground truth azimuth and tilt for this system are listed as 180 and 25 degrees, respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2018, 2019, 2020, 2021, 2022, 2023]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pull down PSM3 data via PVLib and process it for merging with the time series</span>
+<span class="c1"># Fill in your API user details</span>
+<span class="n">nsrdb_api_key</span> <span class="o">=</span> <span class="s1">&#39;DEMO_KEY&#39;</span>
+<span class="n">nsrdb_user_email</span> <span class="o">=</span> <span class="s1">&#39;nsrdb@nrel.gov&#39;</span>
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">psm3s</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">())</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">2022</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="c1"># Pull from API and save locally</span>
+    <span class="n">psm3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_psm3</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span>
+                                    <span class="n">nsrdb_api_key</span><span class="p">,</span>
+                                    <span class="n">nsrdb_user_email</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span>
+                                    <span class="n">attributes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;air_temperature&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;ghi&#39;</span><span class="p">,</span> <span class="s1">&#39;clearsky_ghi&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;clearsky_dni&#39;</span><span class="p">,</span> <span class="s1">&#39;clearsky_dhi&#39;</span><span class="p">],</span>
+                                     <span class="n">map_variables</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                     <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                                     <span class="n">leap_day</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                     <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">psm3s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psm3</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">psm3s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">psm3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">psm3s</span><span class="p">)</span>
+    <span class="n">psm3</span> <span class="o">=</span> <span class="n">psm3</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">psm3</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                      <span class="n">psm3</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                                      <span class="n">freq</span><span class="o">=</span><span class="n">data_freq</span><span class="p">))</span><span class="o">.</span><span class="n">interpolate</span><span class="p">()</span>
+    <span class="n">psm3</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">psm3</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz</span><span class="p">)</span>
+    <span class="n">psm3</span> <span class="o">=</span> <span class="n">psm3</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">power_time_series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">psm3</span> <span class="o">=</span> <span class="n">psm3</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s2">&quot;UTC&quot;</span><span class="p">)</span>
+    <span class="n">psm3</span> <span class="o">=</span> <span class="n">psm3</span><span class="p">[[</span><span class="s1">&#39;temp_air&#39;</span><span class="p">,</span><span class="s1">&#39;ghi&#39;</span><span class="p">,</span> <span class="s1">&#39;ghi_clear&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;dni_clear&#39;</span><span class="p">,</span> <span class="s1">&#39;dhi_clear&#39;</span><span class="p">]]</span>
+    <span class="n">psm3</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./data/psm3_data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in associated NSRDB data for the site.</span>
+<span class="n">power_time_series</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># We load in the PSM3 data from NSRDB for this</span>
+<span class="c1"># particular location. This data is pulled via the</span>
+<span class="c1"># following function in PVLib: </span>
+<span class="c1"># :py:func:`pvlib.iotools.get_psm3`</span>
+<span class="n">psm3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./data/psm3_data.csv&quot;</span><span class="p">,</span>
+                   <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                   <span class="n">index_col</span> <span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">psm3</span> <span class="o">=</span> <span class="n">psm3</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span>
+
+<span class="n">is_clear</span> <span class="o">=</span> <span class="p">(</span><span class="n">psm3</span><span class="o">.</span><span class="n">ghi_clear</span> <span class="o">==</span> <span class="n">psm3</span><span class="o">.</span><span class="n">ghi</span><span class="p">)</span>
+<span class="n">is_daytime</span> <span class="o">=</span> <span class="p">(</span><span class="n">psm3</span><span class="o">.</span><span class="n">ghi</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">time_series_clearsky</span> <span class="o">=</span> <span class="n">power_time_series</span><span class="p">[</span><span class="n">is_clear</span> <span class="o">&amp;</span>
+                                         <span class="n">is_daytime</span><span class="p">]</span>
+<span class="n">time_series_clearsky</span> <span class="o">=</span> <span class="n">time_series_clearsky</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">psm3_clearsky</span> <span class="o">=</span> <span class="n">psm3</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">time_series_clearsky</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="c1"># Get solar azimuth and zenith from pvlib, based on</span>
+<span class="c1"># lat-long coords</span>
+<span class="n">solpos_clearsky</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span>
+    <span class="n">time_series_clearsky</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_tilt</span><span class="p">,</span> <span class="n">predicted_azimuth</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> \
+<span class="n">infer_orientation_fit_pvwatts</span><span class="p">(</span>
+    <span class="n">time_series_clearsky</span><span class="p">,</span>
+    <span class="n">psm3_clearsky</span><span class="o">.</span><span class="n">ghi_clear</span><span class="p">,</span>
+    <span class="n">psm3_clearsky</span><span class="o">.</span><span class="n">dhi_clear</span><span class="p">,</span>
+    <span class="n">psm3_clearsky</span><span class="o">.</span><span class="n">dni_clear</span><span class="p">,</span>
+    <span class="n">solpos_clearsky</span><span class="o">.</span><span class="n">zenith</span><span class="p">,</span>
+    <span class="n">solpos_clearsky</span><span class="o">.</span><span class="n">azimuth</span><span class="p">,</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="n">psm3_clearsky</span><span class="o">.</span><span class="n">temp_air</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Compare actual system azimuth and tilt to predicted</span>
+<span class="c1"># azimuth and tilt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted azimuth: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">predicted_azimuth</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted tilt: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">predicted_tilt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted azimuth: 175.34923779984652
+Predicted tilt: 28.1091759226971
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="thank-you-for-additional-examples-check-out-pvanalytics-documentation-https-pvanalytics-readthedocs-io-en-stable">
+<h1>Thank you! For additional examples, check out PVAnalytics documentation: <a class="reference external" href="https://pvanalytics.readthedocs.io/en/stable/">https://pvanalytics.readthedocs.io/en/stable/</a><a class="headerlink" href="#thank-you-for-additional-examples-check-out-pvanalytics-documentation-https-pvanalytics-readthedocs-io-en-stable" title="Link to this heading">#</a></h1>
+<p><img alt="alt text" src="_images/pvanalytics-logo.png" /></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PV-Tutorials/2024_RdTools_Webinar",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OSS Webinar Python Tutorial</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="RdTools%20tutorial.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">RdTools tutorial</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Python PVAnalytics QA Demo for AC Power Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kirsten-perry-march-19th-2024">Kirsten Perry, March 19th 2024</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-data-checks-stale-data-outliers-abnormal-periods">Basic Data Checks: Stale Data, Outliers, Abnormal Periods</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-completeness-score">Daily Completeness Score</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-shift-check">Time Shift Check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-capacity-shift-check">Data/Capacity Shift Check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-mounting-configuration">Assessing Mounting Configuration</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-azimuth-and-tilt">Assessing Azimuth and Tilt</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thank-you-for-additional-examples-check-out-pvanalytics-documentation-https-pvanalytics-readthedocs-io-en-stable">Thank you! For additional examples, check out PVAnalytics documentation: https://pvanalytics.readthedocs.io/en/stable/</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kevin Anderson, Kirsten Perry, Michael Deceglie
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

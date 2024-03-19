@@ -1,0 +1,1560 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Solar Data Tools Webinar &#8212; OSS Webinar 2 Python Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solar-data-tools-demo';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SETO Webinar 2: RdTools availability analysis" href="rdtools-availability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">OSS Webinar 2 Python Tutorial</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    OSS Webinar Python Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pvanalytics-slideshow.html">Python PVAnalytics QA Demo for AC Power Data</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="RdTools%20tutorial.html">RdTools tutorial</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="rdtools-availability.html">SETO Webinar 2: RdTools availability analysis</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solar Data Tools Webinar</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PV-Tutorials/2024_RdTools_Webinar/blob/main/solar-data-tools-demo.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2024_RdTools_Webinar" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PV-Tutorials/2024_RdTools_Webinar/issues/new?title=Issue%20on%20page%20%2Fsolar-data-tools-demo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/solar-data-tools-demo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Solar Data Tools Webinar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access-and-loading">Data access and loading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-inverter-01-from-site-2017-solar-farm-array">Analysis of inverter 01 from site 2017 “Solar Farm Array”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-inspection">data quality inspection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-factor-analysis">Loss factor analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-rdtools">Comparison to RdTools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-site-2015-maui-ocean-center">Analysis of site 2015 “Maui Ocean Center”</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="solar-data-tools-webinar">
+<h1>Solar Data Tools Webinar<a class="headerlink" href="#solar-data-tools-webinar" title="Link to this heading">#</a></h1>
+<p>Demonstration of the Solar Data Tools pipeline on open source data provided by the <a class="reference external" href="https://openei.org/wiki/PVDAQ/PVData_Map">DOE Data Prize</a></p>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Demonstrate basic software usage on Inverter 01 from site 2107 “Farm Solar Array” (CA)</p></li>
+<li><p>Compare and contrast system degradation with RdTools</p></li>
+<li><p>Take a look at site 2015 “Maui Ocean Center” (HI)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scientific python imports</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># plotting imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># file management imports</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">boto3</span>  <span class="c1"># &lt;- for downloading DOE Data Prize files from OEDI S3 bucket</span>
+
+<span class="c1"># SDT imports</span>
+<span class="kn">from</span> <span class="nn">solardatatools</span> <span class="kn">import</span> <span class="n">DataHandler</span>
+
+<span class="c1"># Timing</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="n">notebook_start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-access-and-loading">
+<h2>Data access and loading<a class="headerlink" href="#data-access-and-loading" title="Link to this heading">#</a></h2>
+<p>To be able to download the files automatically with boto3, you must have AWS command line tools (CLT) installed and authorized on your computer. Otherwise, you can download the files manually from <a class="reference external" href="https://data.openei.org/s3_viewer?bucket=oedi-data-lake&amp;amp;prefix=pvdaq%2F2023-solar-data-prize%2F">here</a>, and put them in the “data” folder in this repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">s3_bucket</span><span class="p">,</span> <span class="n">s3_key</span><span class="p">,</span> <span class="n">is_2107</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">local_file_path</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="c1"># Check if the file exists locally</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">local_file_path</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading local CSV file: </span><span class="si">{</span><span class="n">local_file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Local CSV file not found. Downloading from S3.&quot;</span><span class="p">)</span>
+        <span class="n">download_csv_from_s3</span><span class="p">(</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">s3_key</span><span class="p">,</span> <span class="n">local_file_path</span><span class="p">)</span>
+    <span class="n">data_frame</span> <span class="o">=</span> <span class="n">load_csv</span><span class="p">(</span><span class="n">local_file_path</span><span class="p">,</span> <span class="n">is_2107</span><span class="o">=</span><span class="n">is_2107</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data_frame</span>
+
+<span class="k">def</span> <span class="nf">download_csv_from_s3</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">,</span> <span class="n">s3_key</span><span class="p">,</span> <span class="n">local_destination</span><span class="p">):</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;s3&quot;</span><span class="p">)</span>
+    <span class="n">s3</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">,</span> <span class="n">s3_key</span><span class="p">,</span> <span class="n">local_destination</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">is_2107</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">file_path</span><span class="p">,</span>
+        <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-of-inverter-01-from-site-2017-solar-farm-array">
+<h2>Analysis of inverter 01 from site 2017 “Solar Farm Array”<a class="headerlink" href="#analysis-of-inverter-01-from-site-2017-solar-farm-array" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2107</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/2107_electrical_data.csv&quot;</span><span class="p">,</span>
+    <span class="n">s3_bucket</span><span class="o">=</span><span class="s2">&quot;oedi-data-lake&quot;</span><span class="p">,</span>
+    <span class="n">s3_key</span><span class="o">=</span><span class="s2">&quot;pvdaq/2023-solar-data-prize/2107_OEDI/data/2107_electrical_data.csv&quot;</span>
+<span class="p">)</span>
+<span class="n">df_2107</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading local CSV file: data/2107_electrical_data.csv
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inv_01_dc_current_inv_149579</th>
+      <th>inv_01_dc_voltage_inv_149580</th>
+      <th>inv_01_ac_current_inv_149581</th>
+      <th>inv_01_ac_voltage_inv_149582</th>
+      <th>inv_01_ac_power_inv_149583</th>
+      <th>inv_02_dc_current_inv_149584</th>
+      <th>inv_02_dc_voltage_inv_149585</th>
+      <th>inv_02_ac_current_inv_149586</th>
+      <th>inv_02_ac_voltage_inv_149587</th>
+      <th>inv_02_ac_power_inv_149588</th>
+      <th>...</th>
+      <th>inv_23_dc_current_inv_149689</th>
+      <th>inv_23_dc_voltage_inv_149690</th>
+      <th>inv_23_ac_current_inv_149691</th>
+      <th>inv_23_ac_voltage_inv_149692</th>
+      <th>inv_23_ac_power_inv_149693</th>
+      <th>inv_24_dc_current_inv_149694</th>
+      <th>inv_24_dc_voltage_inv_149695</th>
+      <th>inv_24_ac_current_inv_149696</th>
+      <th>inv_24_ac_voltage_inv_149697</th>
+      <th>inv_24_ac_power_inv_149698</th>
+    </tr>
+    <tr>
+      <th>measured_on</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-11-01 00:00:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2017-11-01 00:05:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2017-11-01 00:10:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2017-11-01 00:15:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2017-11-01 00:20:00</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 119 columns</p>
+</div></div></div>
+</div>
+<p>With our data loaded as a Pandas data frame, we’re ready to instantiate the Solar Data Tools data handler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span> <span class="o">=</span> <span class="n">DataHandler</span><span class="p">(</span><span class="n">df_2107</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, we happen to know ahead of time that the data is affected by Daylight Savings Times shifts, we we’ll just correct that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">fix_dst</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’re ready to run the data onboarding pipleline. The SDT approach analyzes one power (or irradiance) time series in isolation, without the need for a site model or correlated meteorlogical data. Here we select the 5th column, corresponding to the AC power generated by inverter 01.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_ix</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_2107</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">col_ix</span><span class="p">])</span>
+<span class="n">dh_2107</span><span class="o">.</span><span class="n">run_pipeline</span><span class="p">(</span><span class="n">power_col</span><span class="o">=</span><span class="n">df_2107</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">col_ix</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inv_01_ac_power_inv_149583
+
+            *********************************************
+            * Solar Data Tools Data Onboarding Pipeline *
+            *********************************************
+
+            This pipeline runs a series of preprocessing, cleaning, and quality
+            control tasks on stand-alone PV power or irradiance time series data.
+            After the pipeline is run, the data may be plotted, filtered, or
+            further analyzed.
+
+            Authors: Bennet Meyers and Sara Miskovich, SLAC
+
+            (Tip: if you have a mosek [https://www.mosek.com/] license and have it
+            installed on your system, try setting solver=&#39;MOSEK&#39; for a speedup)
+
+            This material is based upon work supported by the U.S. Department
+            of Energy&#39;s Office of Energy Efficiency and Renewable Energy (EERE)
+            under the Solar Energy Technologies Office Award Number 38529.
+
+            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>task list: 100%|██████████████████████████████████| 7/7 [00:31&lt;00:00,  4.44s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total time: 31.10 seconds
+--------------------------------
+Breakdown
+--------------------------------
+Preprocessing              10.98s
+Cleaning                   0.66s
+Filtering/Summarizing      19.46s
+    Data quality           0.30s
+    Clear day detect       0.50s
+    Clipping detect        7.55s
+    Capacity change detect 11.12s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data-quality-inspection">
+<h3>data quality inspection<a class="headerlink" href="#data-quality-inspection" title="Link to this heading">#</a></h3>
+<p>SDT provides a number of tools to inspect the data set. The first is the top-level report.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------
+DATA SET REPORT
+-----------------
+length               6.02 years
+capacity estimate    28.33 kW
+data sampling        5 minutes
+quality score        0.87
+clearness score      0.50
+inverter clipping    True
+clipped fraction     0.26
+capacity changes     True
+data quality warning True
+time shift errors    False
+time zone errors     False
+            
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also make a machine-readable version, which is useful when processing many files/columns for creating a summary table of all data sets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">report</span><span class="p">(</span><span class="n">return_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;length&#39;: 6.021917808219178,
+ &#39;capacity&#39;: 28.332199999999954,
+ &#39;sampling&#39;: 5,
+ &#39;quality score&#39;: 0.873066424021838,
+ &#39;clearness score&#39;: 0.49545040946314833,
+ &#39;inverter clipping&#39;: True,
+ &#39;clipped fraction&#39;: 0.25932666060054593,
+ &#39;capacity change&#39;: True,
+ &#39;data quality warning&#39;: True,
+ &#39;time shift correction&#39;: False,
+ &#39;time zone correction&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second thing I always do is plot the measured data as a heatmap, to get an overall feel for the data set. Solar data tools provides a “raw” view and a “filled” view, where missing data has been filled and issues like time shifts have been corrected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">plot_heatmap</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;bad&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c96db8c1525721c118b2bc38b215af6a7076c0124e9de00bc42439158866e403.png" src="_images/c96db8c1525721c118b2bc38b215af6a7076c0124e9de00bc42439158866e403.png" />
+</div>
+</div>
+<p>Each of the subroutines in the onboarding pipeline have plotting functions associated with them, so provide insight into how the algorithm performed. For example, we saw in the report that there were “capacity changes”. We can inspect this analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">plot_capacity_change_analysis</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5e4043048511ffd6fdd0a5e320894c3f9d3378327505ae714f55095d281b828a.png" src="_images/5e4043048511ffd6fdd0a5e320894c3f9d3378327505ae714f55095d281b828a.png" />
+</div>
+</div>
+<p>Here is a “polar transform” view of the measured power. We bin times of the year and transform them into azimuth-angle location and average the measured power in each bin. Some bins near the top have no observations at this scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">plot_polar_transform</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">38.996306</span><span class="p">,</span>
+                             <span class="n">lon</span><span class="o">=-</span><span class="mf">122.134111</span><span class="p">,</span>
+                             <span class="n">tz_offset</span><span class="o">=-</span><span class="mi">8</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/50e805841feac2645ab781532803e15ecb7b26cc217b66d3b96aa8ca538932f4.png" src="_images/50e805841feac2645ab781532803e15ecb7b26cc217b66d3b96aa8ca538932f4.png" />
+</div>
+</div>
+<p>When objects are causing shade, they are identifiable in this view. For example, the irradiance sensor is shaded by a pole.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2107_irr</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/2107_irradiance_data.csv&quot;</span><span class="p">,</span>
+    <span class="n">s3_bucket</span><span class="o">=</span><span class="s2">&quot;oedi-data-lake&quot;</span><span class="p">,</span>
+    <span class="n">s3_key</span><span class="o">=</span><span class="s2">&quot;pvdaq/2023-solar-data-prize/2107_OEDI/data/2107_irradiance_data.csv&quot;</span>
+<span class="p">)</span>
+<span class="n">dh_2107_irr</span> <span class="o">=</span> <span class="n">DataHandler</span><span class="p">(</span><span class="n">df_2107_irr</span><span class="p">)</span>
+<span class="n">dh_2107_irr</span><span class="o">.</span><span class="n">fix_dst</span><span class="p">()</span>
+<span class="n">dh_2107_irr</span><span class="o">.</span><span class="n">run_pipeline</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dh_2107_irr</span><span class="o">.</span><span class="n">plot_polar_transform</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">38.996306</span><span class="p">,</span>
+                                 <span class="n">lon</span><span class="o">=-</span><span class="mf">122.134111</span><span class="p">,</span>
+                                 <span class="n">tz_offset</span><span class="o">=-</span><span class="mi">8</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading local CSV file: data/2107_irradiance_data.csv
+
+            *********************************************
+            * Solar Data Tools Data Onboarding Pipeline *
+            *********************************************
+
+            This pipeline runs a series of preprocessing, cleaning, and quality
+            control tasks on stand-alone PV power or irradiance time series data.
+            After the pipeline is run, the data may be plotted, filtered, or
+            further analyzed.
+
+            Authors: Bennet Meyers and Sara Miskovich, SLAC
+
+            (Tip: if you have a mosek [https://www.mosek.com/] license and have it
+            installed on your system, try setting solver=&#39;MOSEK&#39; for a speedup)
+
+            This material is based upon work supported by the U.S. Department
+            of Energy&#39;s Office of Energy Efficiency and Renewable Energy (EERE)
+            under the Solar Energy Technologies Office Award Number 38529.
+
+            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>task list: 100%|██████████████████████████████████| 7/7 [00:23&lt;00:00,  3.38s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total time: 23.64 seconds
+--------------------------------
+Breakdown
+--------------------------------
+Preprocessing              9.17s
+Cleaning                   0.50s
+Filtering/Summarizing      13.97s
+    Data quality           0.31s
+    Clear day detect       0.53s
+    Clipping detect        7.43s
+    Capacity change detect 5.69s
+</pre></div>
+</div>
+<img alt="_images/352eb477ebed484d9baa57eab908febd0b5e02649ae6174259688cf6fd033b85.png" src="_images/352eb477ebed484d9baa57eab908febd0b5e02649ae6174259688cf6fd033b85.png" />
+</div>
+</div>
+<p>In this case, we happen to know the latitude and longitude. But what if you need that information?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># just provide a GMT offset for the timestamps</span>
+<span class="n">dh_2107</span><span class="o">.</span><span class="n">setup_location_and_orientation_estimation</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">lat_est</span> <span class="o">=</span> <span class="n">dh_2107</span><span class="o">.</span><span class="n">estimate_latitude</span><span class="p">()</span>
+<span class="n">lon_est</span> <span class="o">=</span> <span class="n">dh_2107</span><span class="o">.</span><span class="n">estimate_longitude</span><span class="p">()</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">      Actual   Estimated</span>
+<span class="s2">Lat:  </span><span class="si">{</span><span class="mf">38.996306</span><span class="si">:</span><span class="s2">&gt;6.1f</span><span class="si">}</span><span class="s2">    </span><span class="si">{</span><span class="n">lat_est</span><span class="si">:</span><span class="s2">&gt;6.1f</span><span class="si">}</span>
+<span class="s2">Lon:  </span><span class="si">{</span><span class="o">-</span><span class="mf">122.134111</span><span class="si">:</span><span class="s2">&gt;6.1f</span><span class="si">}</span><span class="s2">    </span><span class="si">{</span><span class="n">lon_est</span><span class="si">:</span><span class="s2">&gt;6.1f</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Actual   Estimated
+Lat:    39.0      40.0
+Lon:  -122.1    -122.2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/mdecegli/opt/anaconda3/envs/oss_webinar/lib/python3.10/site-packages/cvxpy/reductions/solvers/solving_chain.py:336: FutureWarning: 
+    Your problem is being solved with the ECOS solver by default. Starting in 
+    CVXPY 1.5.0, Clarabel will be used as the default solver instead. To continue 
+    using ECOS, specify the ECOS solver explicitly using the ``solver=cp.ECOS`` 
+    argument to the ``problem.solve`` method.
+    
+  warnings.warn(ECOS_DEPRECATION_MSG, FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+<p>(roughly 72 miles from the actual location)</p>
+</section>
+<section id="loss-factor-analysis">
+<h3>Loss factor analysis<a class="headerlink" href="#loss-factor-analysis" title="Link to this heading">#</a></h3>
+<p>After running the main pipeline, we can now run other analysis, such as estimating the long-term, bulk degradation rate and the total losses from weather, outages, capacity changes, and soiling. As with the data quality analytics in the pipeline, this method relies on a technique of <a class="reference external" href="https://web.stanford.edu/~boyd/papers/sig_decomp_mprox.html">statistical signal decomposition</a>. We fit many similar signal decomposition models with Monte Carlo sampling on the parameters to generate a stable estimate of the degradation rate with confidence bounds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">run_loss_factor_analysis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ************************************************
+            * Solar Data Tools Degradation Estimation Tool *
+            ************************************************
+
+            Monte Carlo sampling to generate a distributional estimate
+            of the degradation rate [%/yr]
+
+            The distribution typically stabilizes in 50-100 samples.
+
+            Author: Bennet Meyers, SLAC
+
+            This material is based upon work supported by the U.S. Department
+            of Energy&#39;s Office of Energy Efficiency and Renewable Energy (EERE)
+            under the Solar Energy Technologies Office Award Number 38529.
+
+            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10it [01:02,  6.74s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: 0.047, -0.135, 0.144
+changes: -3.850e-03, 0.000e+00, 0.000e+00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20it [02:06,  6.33s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: 0.055, -0.135, 0.244
+changes: -2.341e-03, 0.000e+00, 0.000e+00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22it [02:26,  6.65s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing loss factor analysis...
+
+                    ***************************************
+                    * Solar Data Tools Loss Factor Report *
+                    ***************************************
+
+                    degradation rate [%/yr]:                     0.058
+                    deg. rate 95% confidence:          [-0.135,  0.244]
+                    total energy loss [kWh]:                 -148004.3
+                    bulk deg. energy loss (gain) [kWh]:          711.4
+                    soiling energy loss [kWh]:                 -8504.0
+                    capacity change energy loss [kWh]:        -13417.2
+                    weather energy loss [kWh]:                -68456.3
+                    system outage loss [kWh]:                 -58338.3
+                    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">plot_waterfall</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d787e714adb9ec9140471d105c0ca81a97e84c68473f41a2e00703741c5023db.png" src="_images/d787e714adb9ec9140471d105c0ca81a97e84c68473f41a2e00703741c5023db.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2107</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">plot_decomposition</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/75c335a72c68a16d2449c1ee0f9525ae3341babec438265eb5f8ca85fd6f206e.png" src="_images/75c335a72c68a16d2449c1ee0f9525ae3341babec438265eb5f8ca85fd6f206e.png" />
+</div>
+</div>
+</section>
+<section id="comparison-to-rdtools">
+<h3>Comparison to RdTools<a class="headerlink" href="#comparison-to-rdtools" title="Link to this heading">#</a></h3>
+<p>Having generated an estimate of the degradation rate with confidence bounds of inverter 1, we can compare with the results from RdTools to see if they agree. There are multiple possible configurations to choose from when running an RdTools analysis, and we choose to compare against the NSRDB (satellite-based) analysis without filtering for clipped times. As with the SDT approach, this estimates the <em>AC</em> rather than DC degradation rate of the system in a way that does not require on-site irradiance measurements, making it close to an apples-to-apples comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comparison</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/inverter01_comparison.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">dh_2107</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">degradation_rate</span><span class="p">,</span> 
+                 <span class="n">comparison</span><span class="p">[</span><span class="s1">&#39;yy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                 <span class="n">comparison</span><span class="p">[</span><span class="s1">&#39;yy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">yub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">dh_2107</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">degradation_rate_ub</span><span class="p">,</span>
+                  <span class="n">comparison</span><span class="p">[</span><span class="s1">&#39;yub&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">comparison</span><span class="p">[</span><span class="s1">&#39;yub&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">ylb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">dh_2107</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">degradation_rate_lb</span><span class="p">,</span> 
+                  <span class="n">comparison</span><span class="p">[</span><span class="s1">&#39;ylb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                  <span class="n">comparison</span><span class="p">[</span><span class="s1">&#39;ylb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">yerr</span> <span class="o">=</span> <span class="p">[</span><span class="n">yy</span> <span class="o">-</span> <span class="n">ylb</span><span class="p">,</span> <span class="n">yub</span> <span class="o">-</span> <span class="n">yy</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">comparison</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;degradation [%/year]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated degradation rates for Inverter 01&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bfa221aedd547f84a85a30d1289dd2604959c0e34d7bc5ff66fc3f11ea55461c.png" src="_images/bfa221aedd547f84a85a30d1289dd2604959c0e34d7bc5ff66fc3f11ea55461c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="analysis-of-site-2015-maui-ocean-center">
+<h2>Analysis of site 2015 “Maui Ocean Center”<a class="headerlink" href="#analysis-of-site-2015-maui-ocean-center" title="Link to this heading">#</a></h2>
+<p>One feature of SDT is the speed with which a new analysis can be set up. Typically, all you need to start analyzing data from a new site is the ability to load power data into a data frame. This is even true for sites like 2105, which have complex and difficult to model roof configurations.</p>
+<p><img alt="2105_satellite.png" src="_images/attachment%3A747ce44d-f910-41cd-bbc3-3c573847bee0.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2105</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;data/2105_inv09_data.csv&quot;</span><span class="p">,</span>
+    <span class="n">s3_bucket</span><span class="o">=</span><span class="s2">&quot;oedi-data-lake&quot;</span><span class="p">,</span>
+    <span class="n">s3_key</span><span class="o">=</span><span class="s2">&quot;pvdaq/2023-solar-data-prize/2105_OEDI/data/2105_inv09_data.csv&quot;</span>
+<span class="p">)</span>
+<span class="n">df_2105</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading local CSV file: data/2105_inv09_data.csv
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inv_string09_ac_output_(kwh)_inv_150212</th>
+      <th>inv_string09_ac_output_(power_factor)_inv_150213</th>
+      <th>inv_string09_ac_voltage_(v)_inv_150211</th>
+      <th>inv_string09_dc_voltage_(v)_inv_150210</th>
+      <th>inv_string09_temperature_(c)_inv_150214</th>
+    </tr>
+    <tr>
+      <th>measured_on</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-06-21 08:41:48</th>
+      <td>0.000</td>
+      <td>NaN</td>
+      <td>120.797</td>
+      <td>529.250</td>
+      <td>30.9840</td>
+    </tr>
+    <tr>
+      <th>2019-06-21 08:46:49</th>
+      <td>24.121</td>
+      <td>0.997012</td>
+      <td>121.531</td>
+      <td>399.000</td>
+      <td>33.9549</td>
+    </tr>
+    <tr>
+      <th>2019-06-21 08:51:49</th>
+      <td>24.975</td>
+      <td>0.998193</td>
+      <td>121.844</td>
+      <td>399.062</td>
+      <td>39.6553</td>
+    </tr>
+    <tr>
+      <th>2019-06-21 08:56:49</th>
+      <td>25.717</td>
+      <td>0.998244</td>
+      <td>121.047</td>
+      <td>399.125</td>
+      <td>44.1536</td>
+    </tr>
+    <tr>
+      <th>2019-06-21 09:01:49</th>
+      <td>26.486</td>
+      <td>0.999318</td>
+      <td>120.812</td>
+      <td>399.188</td>
+      <td>44.8437</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_ix</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_2105</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">col_ix</span><span class="p">])</span>
+<span class="n">dh_2105</span> <span class="o">=</span> <span class="n">DataHandler</span><span class="p">(</span><span class="n">df_2105</span><span class="p">)</span>
+<span class="n">dh_2105</span><span class="o">.</span><span class="n">run_pipeline</span><span class="p">(</span><span class="n">power_col</span><span class="o">=</span><span class="n">df_2105</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">col_ix</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inv_string09_ac_output_(kwh)_inv_150212
+
+            *********************************************
+            * Solar Data Tools Data Onboarding Pipeline *
+            *********************************************
+
+            This pipeline runs a series of preprocessing, cleaning, and quality
+            control tasks on stand-alone PV power or irradiance time series data.
+            After the pipeline is run, the data may be plotted, filtered, or
+            further analyzed.
+
+            Authors: Bennet Meyers and Sara Miskovich, SLAC
+
+            (Tip: if you have a mosek [https://www.mosek.com/] license and have it
+            installed on your system, try setting solver=&#39;MOSEK&#39; for a speedup)
+
+            This material is based upon work supported by the U.S. Department
+            of Energy&#39;s Office of Energy Efficiency and Renewable Energy (EERE)
+            under the Solar Energy Technologies Office Award Number 38529.
+
+            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>task list: 100%|██████████████████████████████████| 7/7 [00:23&lt;00:00,  3.39s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total time: 23.70 seconds
+--------------------------------
+Breakdown
+--------------------------------
+Preprocessing              4.64s
+Cleaning                   0.39s
+Filtering/Summarizing      18.67s
+    Data quality           0.17s
+    Clear day detect       0.41s
+    Clipping detect        7.78s
+    Capacity change detect 10.32s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2105</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------
+DATA SET REPORT
+-----------------
+length               4.41 years
+capacity estimate    41.86 kW
+data sampling        5 minutes
+quality score        0.97
+clearness score      0.15
+inverter clipping    True
+clipped fraction     0.02
+capacity changes     True
+data quality warning True
+time shift errors    False
+time zone errors     False
+            
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2105</span><span class="o">.</span><span class="n">plot_heatmap</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;bad&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c187da51dde265f7ddb01fcc68e46bc1c2cb766b39da9f4eb789d90b54c74469.png" src="_images/c187da51dde265f7ddb01fcc68e46bc1c2cb766b39da9f4eb789d90b54c74469.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2105</span><span class="o">.</span><span class="n">plot_polar_transform</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">20.884134</span><span class="p">,</span>
+                             <span class="n">lon</span><span class="o">=-</span><span class="mf">156.340543</span><span class="p">,</span>
+                             <span class="n">tz_offset</span><span class="o">=-</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8e7202445dfd2afee093ff931b088e02e09e547f75fdcad19885b43a26064b95.png" src="_images/8e7202445dfd2afee093ff931b088e02e09e547f75fdcad19885b43a26064b95.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2105</span><span class="o">.</span><span class="n">run_loss_factor_analysis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            ************************************************
+            * Solar Data Tools Degradation Estimation Tool *
+            ************************************************
+
+            Monte Carlo sampling to generate a distributional estimate
+            of the degradation rate [%/yr]
+
+            The distribution typically stabilizes in 50-100 samples.
+
+            Author: Bennet Meyers, SLAC
+
+            This material is based upon work supported by the U.S. Department
+            of Energy&#39;s Office of Energy Efficiency and Renewable Energy (EERE)
+            under the Solar Energy Technologies Office Award Number 38529.
+
+            
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10it [00:18,  2.05s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: -2.046, -2.609, -1.764
+changes: -7.290e-02, -3.839e-02, 0.000e+00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20it [00:39,  2.12s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: -2.046, -2.609, -1.626
+changes: -2.540e-02, 0.000e+00, 0.000e+00
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30it [01:02,  2.26s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: -1.926, -2.607, -1.632
+changes: 3.143e-02, 9.597e-04, -2.004e-03
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40it [01:24,  2.26s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: -1.926, -2.597, -1.608
+changes: 2.728e-02, 9.597e-04, -6.810e-04
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50it [01:47,  2.23s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P50, P02.5, P97.5: -1.980, -2.587, -1.614
+changes: 4.150e-03, 9.597e-04, -6.810e-04
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51it [01:51,  2.20s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing loss factor analysis...
+
+                    ***************************************
+                    * Solar Data Tools Loss Factor Report *
+                    ***************************************
+
+                    degradation rate [%/yr]:                    -2.000
+                    deg. rate 95% confidence:          [-2.586, -1.616]
+                    total energy loss [kWh]:                 -124153.8
+                    bulk deg. energy loss (gain) [kWh]:       -18502.9
+                    soiling energy loss [kWh]:                -14612.2
+                    capacity change energy loss [kWh]:        -11699.1
+                    weather energy loss [kWh]:                -64220.1
+                    system outage loss [kWh]:                 -15119.6
+                    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2105</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">plot_waterfall</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4fc6c37ca0d7c9a35ab4f00fbf2f2bf34e6b39fd17faa0ed6e0a6d16a263c495.png" src="_images/4fc6c37ca0d7c9a35ab4f00fbf2f2bf34e6b39fd17faa0ed6e0a6d16a263c495.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc_context</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">}):</span>
+    <span class="n">dh_2105</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">plot_pie</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/52eaf857c4b90ca3f4e5f7afc33bf1dfe5d9611e189ff79c296319cd6800b8be.png" src="_images/52eaf857c4b90ca3f4e5f7afc33bf1dfe5d9611e189ff79c296319cd6800b8be.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh_2105</span><span class="o">.</span><span class="n">loss_analysis</span><span class="o">.</span><span class="n">plot_decomposition</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7a3122abaf52660fce087f6c1b1ac9c956d56b6e964ff281779f7429eaa9de63.png" src="_images/7a3122abaf52660fce087f6c1b1ac9c956d56b6e964ff281779f7429eaa9de63.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">notebook_end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Notebook ran in </span><span class="si">{</span><span class="p">(</span><span class="n">notebook_end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">notebook_start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Notebook ran in 19.32 minutes
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PV-Tutorials/2024_RdTools_Webinar",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rdtools-availability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SETO Webinar 2: RdTools availability analysis</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access-and-loading">Data access and loading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-inverter-01-from-site-2017-solar-farm-array">Analysis of inverter 01 from site 2017 “Solar Farm Array”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-inspection">data quality inspection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-factor-analysis">Loss factor analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-rdtools">Comparison to RdTools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-site-2015-maui-ocean-center">Analysis of site 2015 “Maui Ocean Center”</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kevin Anderson, Kirsten Perry, Michael Deceglie
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

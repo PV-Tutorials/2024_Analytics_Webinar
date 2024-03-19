@@ -1,60 +1,58 @@
-![tutorialpromo](images/tutorial_banner.PNG)
-
-# PVSC50 Python Tutorial
-Welcome! The goal of this tutorial is to introduce attendees to the
-[pvlib python](https://pvlib-python.readthedocs.io/) package for modeling
-production of PV systems. The tutorial is divided into 5 sections and several
-appendicies.
+# OSS Webinar Python Tutorial
+Welcome! The goal of this tutorial is to introduce attendees to the following packages:
+* PVAnalytics[https://pvanalytics.readthedocs.io/en/stable/]
+* RdTools[https://rdtools.readthedocs.io/en/stable/]
+* Solar-Data-Tools[https://solar-data-tools.readthedocs.io/en/documentation-sphinx/]
 
 ## Tutorial Summary:
-* **Tutorial 0**: Introduction to the tutorial, the lesson plan, and resources (~30 minutes)
-* **Tutorial 1**: Access TMY weather data and visualize monthly irradiance data (~30 minutes)
-* **Tutorial 2**: Calculate solar position, plane-of-array irradiance, and
-  visualize average daily insolation (30 minutes)
-* **Tutorial 3**: Estimate module temperature from ambient (~20 minutes)
-* **Tutorial 4**: Use POA irradiance and module temperature to model output power
-  from a single module (~20 minutes)
-* **Tutorial 5**: Combine modules to form strings, calculate inverter efficiency
-  and total array output (~independent study)
-* **Tutorials Appendices**: More tutorials on a variety of fun topics (~independent study)
+* **Introduction**: Introduction to the tools being demoed
+* **Tutorial 1**: PVAnalytics demo (~15 minutes)
+* **Tutorial 2**: RDTools demo (~30 minutes)
+* **Tutorial 3**: SDT demo (~30 minutes)
 
 ## Tutorial Setup
 These tutorials are made with [Jupyter](https://jupyter.org), which is a
 browser based interactive Python notebook that allows you to run the tutorials
-in the cloud without any additional setup. On the day of the tutorial, we will
-use [Google Colaboratory](https://colab.research.google.com/).
-
-### Google Colaboratory
-To run these tutorials in [Google Colaboratory](https://colab.research.google.com/)
-you can click the button below:
-
-<a target="_blank" href="https://colab.research.google.com/github/PV-Tutorials/2024_RdTools_Webinar/blob/main/Tutorial%200%20-%20Overview.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
-
-You can also select Colaboratory from the launch icon at the top of each tutorial
-in the [Jupyter book](https://pv-tutorials.github.io/2024_RdTools_Webinar/index.html).
+in the cloud without any additional setup.
 
 #### Installing Requirements
 When using Google Colaboratory, you must uncomment the first cell that installs
 the tutorial requirements.
 
-    !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2024_RdTools_Webinar/main/requirements.txt
+    !pip install -r https://raw.githubusercontent.com/PV-Tutorials/2024_Analytics_Webinar/requirements.txt
 
 ### Jupyter Books
 
-The full tutorial is hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
+The tutorial content will soon be hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
 This book has navigation, search, and can be used to launch each book in Colaboratory.
+Check back soon!
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_RdTools_Webinar/index.html>)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_Analytics_Webinar/index.html>)
 
-### My Binder
+### Running PVAnalytics
 
-The tutorials will remain available on GitHub, and you can run
-the tutorial anytime in [Binder](https://mybinder.org) by clicking the
-following link:
+The following file(s) relate to the PVAnalytics tutorials:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC50/main)
+- 'pvanalytics-slideshow.ipynb' : This tutorial gives an example pipeline for pre-processing an AC power data stream.
+- 'pvanalytics-irradiance-qa.ipynb' : This tutorial gives an example pipeline for pre-processing an irradiance data stream. 
+- 'pvanalytics-temperature-qa.ipynb' : This tutorial gives an example pipeline for pre-processing a temperature data stream. 
+- 'pvanalytics-wind-speed-qa.ipynb' : This tutorial gives an example pipeline for pre-processing an wind speed data stream. 
+
+Please run all tutorials to generate the associated pickle files in the /data/ folder, which contain the final processed time series.
+
+### Running RdTools
+
+The following file(s) relate to the RdTools tutorials:
+
+- 'RdTools Tutorial.ipynb' : This tutorial gives an overview of using RdTools to estimate inverter-level degradation and soiling for Solar Data Prize system 2107.
+
+In order to run the RdTools tutorial, please run the associated PVAnalytics notebooks to generate the pickle files containing the processed, filtered time series data.
+
+### Running Solar-Data-Tools
+
+The following file(s) relate to the Solar-Data-Tools tutorials:
+
+- 'solar-data-tools-demo.ipynb' : This tutorial gives an overview of using Solar-Data-Tools to preprocess solar data streams, estimate degradation, and perform loss factor analysis.
 
 ### Locally
 
@@ -67,16 +65,20 @@ steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/PV-Tutorials/2024_RdTools_Webinar.git
+   git clone https://github.com/PV-Tutorials/2024_Analytics_Webinar.git
    ```
 
 1. Create the environment and install the requirements. The repository includes
    a `requirements.txt` file that contains a list the packages needed to run
-   this tutorial. To install them using conda run:
+   this tutorial. The requirements file pins versions to those shown in the demo.
+   This ensures you will get the same results as were presented in the webinar, but
+   we encourage you to check out the latest versions of all the packages for the most
+   up to date functionality. To install them using conda and pip run:
 
    ```
-   conda create -n pvsc50 jupyter -c pvlib --file requirements.txt
-   conda activate pvsc50
+   conda create --name rdtools_demo python==3.10 notebook==6.48
+   conda activate oss_webinar
+   pip install -r requirements.txt
    ```
 
 1. Start a Jupyter session:
@@ -85,7 +87,7 @@ steps:
    jupyter notebook
    ```
 
-1. Use the file explorer in Jupyter lab to browse to `PVSC50`
+1. Use the file explorer in Jupyter lab to browse to `2024_Analytics_Webinar`
    and start the first Tutorial.
 
 

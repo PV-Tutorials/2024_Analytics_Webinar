@@ -1,2 +1,3 @@
 pvlib==0.9.5
 matplotlib
+solar-data-tools

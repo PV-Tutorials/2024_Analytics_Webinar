@@ -23,11 +23,10 @@ the tutorial requirements.
 
 ### Jupyter Books
 
-The tutorial content will soon be hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
-This book has navigation, search, and can be used to launch each book in Colaboratory.
-Check back soon!
+In addition to the notebooks in the github repository, the tutorial content is also
+hosted as a [Jupyter book](https://jupyterbook.org/intro.html):
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_Analytics_Webinar/index.html>)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_Analytics_Webinar/>)
 
 ### Running PVAnalytics
 

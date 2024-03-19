@@ -71,7 +71,10 @@ steps:
 
 1. Create the environment and install the requirements. The repository includes
    a `requirements.txt` file that contains a list the packages needed to run
-   this tutorial. To install them using conda run:
+   this tutorial. The requirements file pins versions to those shown in the demo.
+   This ensures you will get the same results as were presented in the webinar, but
+   we encourage you to check out the latest versions of all the packages for the most
+   up to date functionality. To install them using conda and pip run:
 
    ```
    conda create --name rdtools_demo python==3.10 notebook==6.48

@@ -5,6 +5,9 @@ format: jb-book
 root: README
 chapters:
 - file: pvanalytics-slideshow
+- file: pvanalytics-irradiance-qa.ipynb
+- file: pvanalytics-temperature-qa-analysis.ipynb
+- file: pvanalytics-wind-speed-qa-analysis.ipynb
 - file: RdTools tutorial
 - file: rdtools-availability
 - file: solar-data-tools-demo

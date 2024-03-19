@@ -74,8 +74,9 @@ steps:
    this tutorial. To install them using conda run:
 
    ```
-   conda create -n oss_webinar jupyter -c pvlib --file requirements.txt
+   conda create --name rdtools_demo python==3.10 notebook==6.48
    conda activate oss_webinar
+   pip install -r requirements.txt
    ```
 
 1. Start a Jupyter session:

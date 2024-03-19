@@ -1,7 +1,9 @@
 
 ### Don't track csv files
 *.csv
-### Except this one
+### Don't track pickles
+*.pkl
+### Except these
 !data/inverter01_comparison.csv
 !data/NSRDB/*.csv
 

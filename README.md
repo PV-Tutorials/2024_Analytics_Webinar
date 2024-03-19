@@ -1,5 +1,3 @@
-![tutorialpromo]
-
 # OSS Webinar Python Tutorial
 Welcome! The goal of this tutorial is to introduce attendees to the following packages:
 * PVAnalytics[https://pvanalytics.readthedocs.io/en/stable/]
@@ -25,8 +23,9 @@ the tutorial requirements.
 
 ### Jupyter Books
 
-The full tutorial is hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
+The tutorial content will soon be hosted as a [Jupyter book](https://jupyterbook.org/intro.html).
 This book has navigation, search, and can be used to launch each book in Colaboratory.
+Check back soon!
 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](<https://pv-tutorials.github.io/2024_Analytics_Webinar/index.html>)
 

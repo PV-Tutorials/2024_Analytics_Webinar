@@ -24,6 +24,10 @@ jobs:
         pip install -r requirements.txt
         pip install jupyter-book
 
+    - name: Preprocess attachments
+      run: |
+        python .github/workflows/preprocess-notebook-attachments.py
+
     # Build the book
     - name: Build the book
       run: |

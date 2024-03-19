@@ -2,6 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: Tutorial 0 - Overview
+root: README
 chapters:
-- file: Tutorial 1 - 
+- file: pvanalytics-slideshow
+- file: RdTools tutorial
+- file: rdtools-availability
+- file: solar-data-tools-demo

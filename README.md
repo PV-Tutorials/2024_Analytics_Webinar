@@ -4,7 +4,7 @@ Welcome! The goal of this tutorial is to introduce attendees to the following pa
 * RdTools[https://rdtools.readthedocs.io/en/stable/]
 * Solar-Data-Tools[https://solar-data-tools.readthedocs.io/en/documentation-sphinx/]  
 
-A webinar recording of the tutorial is available here: https://www.youtube.com/watch?v=XKbqIlAEwOQ 
+A webinar recording of the tutorial is [available here.](https://www.youtube.com/watch?v=XKbqIlAEwOQ)
 
 ## Tutorial Summary:
 * **Introduction**: Introduction to the tools being demoed
